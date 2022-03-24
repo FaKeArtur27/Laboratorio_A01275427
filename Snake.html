@@ -1,0 +1,100 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <title></title>
+  <meta name="Generator" content="Cocoa HTML Writer">
+  <meta name="CocoaVersion" content="2113.3">
+  <style type="text/css">
+    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 10.8px Menlo; color: #7b4705; -webkit-text-stroke: #7b4705; background-color: #eaeaea}
+    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 10.8px Menlo; color: #2f3339; -webkit-text-stroke: #2f3339; background-color: #eaeaea; min-height: 13.0px}
+    p.p3 {margin: 0.0px 0.0px 0.0px 0.0px; font: 10.8px Menlo; color: #2f3339; -webkit-text-stroke: #000000; background-color: #eaeaea}
+    p.p4 {margin: 0.0px 0.0px 0.0px 0.0px; font: 10.8px Menlo; color: #05344e; -webkit-text-stroke: #05344e; background-color: #eaeaea}
+    p.p5 {margin: 0.0px 0.0px 0.0px 0.0px; font: 10.8px Menlo; color: #2f3339; -webkit-text-stroke: #2f3339; background-color: #eaeaea}
+    p.p6 {margin: 0.0px 0.0px 0.0px 0.0px; font: 10.8px Menlo; color: #2f3339; -webkit-text-stroke: #850002; background-color: #eaeaea}
+    span.s1 {font-kerning: none}
+    span.s2 {font-kerning: none; color: #05344e; -webkit-text-stroke: 0px #05344e}
+    span.s3 {font-kerning: none; -webkit-text-stroke: 0px #2f3339}
+    span.s4 {font-kerning: none; color: #2f3339; -webkit-text-stroke: 0px #2f3339}
+    span.s5 {font-kerning: none; color: #2f3339; -webkit-text-stroke: 0px #000000}
+    span.s6 {font-kerning: none; color: #451d01; -webkit-text-stroke: 0px #451d01}
+    span.s7 {font-kerning: none; color: #850002; -webkit-text-stroke: 0px #850002}
+    span.s8 {font-kerning: none; -webkit-text-stroke: 0px #000000}
+    span.s9 {font-kerning: none; color: #408c09; -webkit-text-stroke: 0px #408c09}
+    span.s10 {font-kerning: none; color: #850002}
+  </style>
+</head>
+<body>
+<p class="p1"><span class="s1"><i>"""Snake, classic arcade game.</i></span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><i>Exercises</i></span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><i>1. How do you make the snake faster or slower?</i></span></p>
+<p class="p1"><span class="s1"><i>2. How can you make the snake go around the edges?</i></span></p>
+<p class="p1"><span class="s1"><i>3. How would you move the food?</i></span></p>
+<p class="p1"><span class="s1"><i>4. Change the snake to respond to mouse clicks.</i></span></p>
+<p class="p1"><span class="s1"><i>"""</i></span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p3"><span class="s2"><b>from</b></span><span class="s3"> </span><span class="s1">random</span><span class="s3"> </span><span class="s2"><b>import</b></span><span class="s3"> </span><span class="s1">randrange</span></p>
+<p class="p4"><span class="s1"><b>from</b></span><span class="s4"> </span><span class="s5">turtle</span><span class="s4"> </span><span class="s1"><b>import</b></span><span class="s4"> </span><span class="s6">*</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p3"><span class="s2"><b>from</b></span><span class="s3"> </span><span class="s1">freegames</span><span class="s3"> </span><span class="s2"><b>import</b></span><span class="s3"> </span><span class="s1">square<b>,</b></span><span class="s3"> </span><span class="s1">vector</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p3"><span class="s1">food</span><span class="s3"> </span><span class="s6">=</span><span class="s3"> </span><span class="s1">vector<b>(</b></span><span class="s7">0</span><span class="s1"><b>,</b></span><span class="s3"> </span><span class="s7">0</span><span class="s1"><b>)</b></span></p>
+<p class="p3"><span class="s1">snake</span><span class="s3"> </span><span class="s6">=</span><span class="s3"> </span><span class="s1"><b>[</b>vector<b>(</b></span><span class="s7">10</span><span class="s1"><b>,</b></span><span class="s3"> </span><span class="s7">0</span><span class="s1"><b>)]</b></span></p>
+<p class="p3"><span class="s1">aim</span><span class="s3"> </span><span class="s6">=</span><span class="s3"> </span><span class="s1">vector<b>(</b></span><span class="s7">0</span><span class="s1"><b>,</b></span><span class="s3"> </span><span class="s6">-</span><span class="s7">10</span><span class="s1"><b>)</b></span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p3"><span class="s2"><b>def</b></span><span class="s3"> </span><span class="s1">change<b>(</b>x<b>,</b></span><span class="s3"> </span><span class="s1">y<b>):</b></span></p>
+<p class="p1"><span class="s4"><span class="Apple-converted-space">    </span></span><span class="s1"><i>"""Change snake direction."""</i></span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">    </span></span><span class="s8">aim</span><span class="s6">.</span><span class="s8">x</span><span class="s1"> </span><span class="s6">=</span><span class="s1"> </span><span class="s8">x</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">    </span></span><span class="s8">aim</span><span class="s6">.</span><span class="s8">y</span><span class="s1"> </span><span class="s6">=</span><span class="s1"> </span><span class="s8">y</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p3"><span class="s2"><b>def</b></span><span class="s3"> </span><span class="s1">inside<b>(</b>head<b>):</b></span></p>
+<p class="p1"><span class="s4"><span class="Apple-converted-space">    </span></span><span class="s1"><i>"""Return True if head inside boundaries."""</i></span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">    </span></span><span class="s2"><b>return</b></span><span class="s1"> </span><span class="s6">-</span><span class="s7">200</span><span class="s1"> </span><span class="s6">&lt;</span><span class="s1"> </span><span class="s8">head</span><span class="s6">.</span><span class="s8">x</span><span class="s1"> </span><span class="s6">&lt;</span><span class="s1"> </span><span class="s7">190</span><span class="s1"> </span><span class="s2"><b>and</b></span><span class="s1"> </span><span class="s6">-</span><span class="s7">200</span><span class="s1"> </span><span class="s6">&lt;</span><span class="s1"> </span><span class="s8">head</span><span class="s6">.</span><span class="s8">y</span><span class="s1"> </span><span class="s6">&lt;</span><span class="s1"> </span><span class="s7">190</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p3"><span class="s2"><b>def</b></span><span class="s3"> </span><span class="s1">move<b>():</b></span></p>
+<p class="p1"><span class="s4"><span class="Apple-converted-space">    </span></span><span class="s1"><i>"""Move snake forward one segment."""</i></span></p>
+<p class="p3"><span class="s3"><span class="Apple-converted-space">    </span></span><span class="s1">head</span><span class="s3"> </span><span class="s6">=</span><span class="s3"> </span><span class="s1">snake<b>[</b></span><span class="s6">-</span><span class="s7">1</span><span class="s1"><b>]</b></span><span class="s6">.</span><span class="s1">copy<b>()</b></span></p>
+<p class="p3"><span class="s3"><span class="Apple-converted-space">    </span></span><span class="s1">head</span><span class="s6">.</span><span class="s1">move<b>(</b>aim<b>)</b></span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p3"><span class="s3"><span class="Apple-converted-space">    </span></span><span class="s2"><b>if</b></span><span class="s3"> </span><span class="s2"><b>not</b></span><span class="s3"> </span><span class="s1">inside<b>(</b>head<b>)</b></span><span class="s3"> </span><span class="s2"><b>or</b></span><span class="s3"> </span><span class="s1">head</span><span class="s3"> </span><span class="s2"><b>in</b></span><span class="s3"> </span><span class="s1">snake<b>:</b></span></p>
+<p class="p3"><span class="s3"><span class="Apple-converted-space">        </span></span><span class="s1">square<b>(</b>head</span><span class="s6">.</span><span class="s1">x<b>,</b></span><span class="s3"> </span><span class="s1">head</span><span class="s6">.</span><span class="s1">y<b>,</b></span><span class="s3"> </span><span class="s7">9</span><span class="s1"><b>,</b></span><span class="s3"> </span><span class="s9">'red'</span><span class="s1"><b>)</b></span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">        </span></span><span class="s8">update<b>()</b></span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">        </span></span><span class="s2"><b>return</b></span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p3"><span class="s3"><span class="Apple-converted-space">    </span></span><span class="s1">snake</span><span class="s6">.</span><span class="s1">append<b>(</b>head<b>)</b></span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p3"><span class="s3"><span class="Apple-converted-space">    </span></span><span class="s2"><b>if</b></span><span class="s3"> </span><span class="s1">head</span><span class="s3"> </span><span class="s6">==</span><span class="s3"> </span><span class="s1">food<b>:</b></span></p>
+<p class="p3"><span class="s3"><span class="Apple-converted-space">        </span></span><span class="s2">print</span><span class="s1"><b>(</b></span><span class="s9">'Snake:'</span><span class="s1"><b>,</b></span><span class="s3"> </span><span class="s2">len</span><span class="s1"><b>(</b>snake<b>))</b></span></p>
+<p class="p3"><span class="s3"><span class="Apple-converted-space">        </span></span><span class="s1">food</span><span class="s6">.</span><span class="s1">x</span><span class="s3"> </span><span class="s6">=</span><span class="s3"> </span><span class="s1">randrange<b>(</b></span><span class="s6">-</span><span class="s7">15</span><span class="s1"><b>,</b></span><span class="s3"> </span><span class="s7">15</span><span class="s1"><b>)</b></span><span class="s3"> </span><span class="s6">*</span><span class="s3"> </span><span class="s7">10</span></p>
+<p class="p3"><span class="s3"><span class="Apple-converted-space">        </span></span><span class="s1">food</span><span class="s6">.</span><span class="s1">y</span><span class="s3"> </span><span class="s6">=</span><span class="s3"> </span><span class="s1">randrange<b>(</b></span><span class="s6">-</span><span class="s7">15</span><span class="s1"><b>,</b></span><span class="s3"> </span><span class="s7">15</span><span class="s1"><b>)</b></span><span class="s3"> </span><span class="s6">*</span><span class="s3"> </span><span class="s7">10</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">    </span></span><span class="s2"><b>else</b></span><span class="s8"><b>:</b></span></p>
+<p class="p3"><span class="s3"><span class="Apple-converted-space">        </span></span><span class="s1">snake</span><span class="s6">.</span><span class="s1">pop<b>(</b></span><span class="s7">0</span><span class="s1"><b>)</b></span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p3"><span class="s3"><span class="Apple-converted-space">    </span></span><span class="s1">clear<b>()</b></span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p3"><span class="s3"><span class="Apple-converted-space">    </span></span><span class="s2"><b>for</b></span><span class="s3"> </span><span class="s1">body</span><span class="s3"> </span><span class="s2"><b>in</b></span><span class="s3"> </span><span class="s1">snake<b>:</b></span></p>
+<p class="p3"><span class="s3"><span class="Apple-converted-space">        </span></span><span class="s1">square<b>(</b>body</span><span class="s6">.</span><span class="s1">x<b>,</b></span><span class="s3"> </span><span class="s1">body</span><span class="s6">.</span><span class="s1">y<b>,</b></span><span class="s3"> </span><span class="s7">9</span><span class="s1"><b>,</b></span><span class="s3"> </span><span class="s9">'black'</span><span class="s1"><b>)</b></span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p3"><span class="s3"><span class="Apple-converted-space">    </span></span><span class="s1">square<b>(</b>food</span><span class="s6">.</span><span class="s1">x<b>,</b></span><span class="s3"> </span><span class="s1">food</span><span class="s6">.</span><span class="s1">y<b>,</b></span><span class="s3"> </span><span class="s7">9</span><span class="s1"><b>,</b></span><span class="s3"> </span><span class="s9">'green'</span><span class="s1"><b>)</b></span></p>
+<p class="p3"><span class="s3"><span class="Apple-converted-space">    </span></span><span class="s1">update<b>()</b></span></p>
+<p class="p3"><span class="s3"><span class="Apple-converted-space">    </span></span><span class="s1">ontimer<b>(</b>move<b>,</b></span><span class="s3"> </span><span class="s7">100</span><span class="s1"><b>)</b></span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p6"><span class="s8">setup<b>(</b></span><span class="s10">420</span><span class="s8"><b>,</b></span><span class="s3"> </span><span class="s10">420</span><span class="s8"><b>,</b></span><span class="s3"> </span><span class="s10">370</span><span class="s8"><b>,</b></span><span class="s3"> </span><span class="s10">0</span><span class="s8"><b>)</b></span></p>
+<p class="p3"><span class="s1">hideturtle<b>()</b></span></p>
+<p class="p3"><span class="s1">tracer<b>(</b></span><span class="s2"><b>False</b></span><span class="s1"><b>)</b></span></p>
+<p class="p3"><span class="s1">listen<b>()</b></span></p>
+<p class="p3"><span class="s1">onkey<b>(</b></span><span class="s2"><b>lambda</b></span><span class="s1"><b>:</b></span><span class="s3"> </span><span class="s1">change<b>(</b></span><span class="s7">10</span><span class="s1"><b>,</b></span><span class="s3"> </span><span class="s7">0</span><span class="s1"><b>),</b></span><span class="s3"> </span><span class="s9">'Right'</span><span class="s1"><b>)</b></span></p>
+<p class="p3"><span class="s1">onkey<b>(</b></span><span class="s2"><b>lambda</b></span><span class="s1"><b>:</b></span><span class="s3"> </span><span class="s1">change<b>(</b></span><span class="s6">-</span><span class="s7">10</span><span class="s1"><b>,</b></span><span class="s3"> </span><span class="s7">0</span><span class="s1"><b>),</b></span><span class="s3"> </span><span class="s9">'Left'</span><span class="s1"><b>)</b></span></p>
+<p class="p3"><span class="s1">onkey<b>(</b></span><span class="s2"><b>lambda</b></span><span class="s1"><b>:</b></span><span class="s3"> </span><span class="s1">change<b>(</b></span><span class="s7">0</span><span class="s1"><b>,</b></span><span class="s3"> </span><span class="s7">10</span><span class="s1"><b>),</b></span><span class="s3"> </span><span class="s9">'Up'</span><span class="s1"><b>)</b></span></p>
+<p class="p3"><span class="s1">onkey<b>(</b></span><span class="s2"><b>lambda</b></span><span class="s1"><b>:</b></span><span class="s3"> </span><span class="s1">change<b>(</b></span><span class="s7">0</span><span class="s1"><b>,</b></span><span class="s3"> </span><span class="s6">-</span><span class="s7">10</span><span class="s1"><b>),</b></span><span class="s3"> </span><span class="s9">'Down'</span><span class="s1"><b>)</b></span></p>
+<p class="p3"><span class="s1">move<b>()</b></span></p>
+<p class="p3"><span class="s1">done<b>()</b></span></p>
+</body>
+</html>
